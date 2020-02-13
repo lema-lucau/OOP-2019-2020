@@ -131,23 +131,45 @@ public class Loops extends PApplet
 		// }
 
 		//Rainbow circles
-		background(255);
+		// background(255);
 
-		int count = 0;
-		int x1 = 25;
-		int y1 = 250;
-		int b = 0;
+		// int count = 0;
+		// int x1 = 25;
+		// int y1 = 250;
+		// int b = 0;
 		
-		while(count != 10)
-		{
-			noStroke();
-			fill(b, 10000, 1000);
-			circle(x1, y1, 50);
-			x1 += 50;
-			b += 20;
+		// while(count != 10)
+		// {
+		// 	noStroke();
+		// 	fill(b, 10000, 1000);
+		// 	circle(x1, y1, 50);
+		// 	x1 += 50;
+		// 	b += 20;
 			
+		// 	count += 1;
+		// }
+
+		//Grid
+		int count = 0;
+		int x1 = 50;
+		int y1 = 50;
+		int x2 = 450;
+		int y2 = 450;
+		
+		background(255);
+		
+		while(count != 20)
+		{
+			if(count <= 10)
+			{
+				stroke(86, 242, 7);
+				line(x1, y1, x2, y1);
+				y1 += 35;
+			}
+
+			if(count > 10 && count)			
+
 			count += 1;
 		}
-
 	}
 }

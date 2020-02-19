@@ -76,6 +76,37 @@ public class ArraysExample extends PApplet
 		}
 	}
 
+	void drawLineGraph()
+	{
+		float gapNum = 10f;
+		float gapMon = 35f;
+
+		int x_axis_x1 = 40;
+		int x_axis_x2 = 460;
+		int x_axis_y1 = 450;
+		int x_axis_y2 = 450;
+
+		int y_axis_x1 = 40;
+		int y_axis_x2 = 40;
+		int y_axis_y1 = 20;
+		int y_axis_y2 = 450;
+
+		//Draw x and y axis
+		stroke(255);
+		line(x_axis_x1, x_axis_y1, x_axis_x2, x_axis_y2);
+		line(y_axis_x1, y_axis_y1, y_axis_x2, y_axis_y2);
+
+		//Map x and y axis
+		for(int i = 0; i < 150; i++)
+		{
+			float x = map(i, 0, 150, gapNum, width -gapNum);				
+			line(gapNum, x, width - gapNum, x);
+			fill(255);
+			text(i, x, gapNum / 2);
+
+		}
+	}
+
 	public void keyPressed()
 	{
 		if (key == ' ')
@@ -89,6 +120,6 @@ public class ArraysExample extends PApplet
 		background(0);		
 		colorMode(HSB);	
 
-		drawBarChart();
+		drawLineGraph();
 	}
 }

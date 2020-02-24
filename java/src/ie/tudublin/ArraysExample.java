@@ -78,32 +78,88 @@ public class ArraysExample extends PApplet
 
 	void drawLineGraph()
 	{
-		float gapNum = 10f;
-		float gapMon = 35f;
+		// float gapNum = 10f;
+		// float gapMon = 35f;
 
-		int x_axis_x1 = 40;
-		int x_axis_x2 = 460;
-		int x_axis_y1 = 450;
-		int x_axis_y2 = 450;
+		// int x_axis_x1 = 40;
+		// int x_axis_x2 = 460;
+		// int x_axis_y1 = 450;
+		// int x_axis_y2 = 450;
 
-		int y_axis_x1 = 40;
-		int y_axis_x2 = 40;
-		int y_axis_y1 = 20;
-		int y_axis_y2 = 450;
+		// int y_axis_x1 = 40;
+		// int y_axis_x2 = 40;
+		// int y_axis_y1 = 20;
+		// int y_axis_y2 = 450;
 
-		//Draw x and y axis
+		// //Draw x and y axis
+		// stroke(255);
+		// line(x_axis_x1, x_axis_y1, x_axis_x2, x_axis_y2);
+		// line(y_axis_x1, y_axis_y1, y_axis_x2, y_axis_y2);
+
+		// //Map x and y axis
+		// for(int i = 0; i < 150; i++)
+		// {
+		// 	float x = map(i, 0, 150, gapNum, width -gapNum);				
+		// 	line(gapNum, x, width - gapNum, x);
+		// 	fill(255);
+		// 	text(i, x, gapNum / 2);
+
+		// }
+
+		float border = width * 0.1f;
+
+		textAlign(CENTER,CENTER);
 		stroke(255);
-		line(x_axis_x1, x_axis_y1, x_axis_x2, x_axis_y2);
-		line(y_axis_x1, y_axis_y1, y_axis_x2, y_axis_y2);
+		fill(255);
+		line(border, border, border, height - border);
 
-		//Map x and y axis
-		for(int i = 0; i < 150; i++)
+		for(int ya = 0; ya <= 150; ya+= 10 )
 		{
-			float x = map(i, 0, 150, gapNum, width -gapNum);				
-			line(gapNum, x, width - gapNum, x);
-			fill(255);
-			text(i, x, gapNum / 2);
+			float y = map(ya,0,150,height - border, border);
+			line(border, y, border - 5, y);
+			text(ya,border / 2, y);
+		}
 
+		line(border, height - border, width - height, height - border);
+		for(int i = 0; i < months.length - 1; i++ )
+		{
+			float x = map(i,0,months.length - 1, border, width-border);
+			line(x, height - border, x, height+(border + 5));
+			text(months[i],x,height - border/2);
+		}
+
+		for(int i = 0; i < rainFall.length - 1; i++)
+		{
+			float x1 = map(i,0,months.length-1,border,width-border);
+			float x2 = map(i+1,0,months.length-1,border,width-border);
+			
+			float y1 = map(rainFall[i],0,150,height-border,border);
+			float y2 = map(rainFall[i+1],0,150,height-border,border);
+
+			line(x1,x2,y1,y2);
+		}
+	}
+
+	void drawPieChart() 
+	{
+		fill(255);
+		stroke(0);
+
+		float percentage = 0f;
+		float total = 0f;
+		int colourNum = 0;
+
+		for(int i = 0; i < rainFall.length; i++)
+		{
+			total += rainFall[i];
+		}
+
+		for(int i = 0; i < rainFall.length; i++)
+		{
+			fill(colourNum);
+			percentage = rainFall[i] / total;
+			arc(250,250,100,100,PI / rainFall.length-,PI * percentage);
+			colourNum += 30;
 		}
 	}
 
@@ -120,6 +176,7 @@ public class ArraysExample extends PApplet
 		background(0);		
 		colorMode(HSB);	
 
-		drawLineGraph();
+		//drawLineGraph();
+		drawPieChart();
 	}
 }

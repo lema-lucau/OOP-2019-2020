@@ -78,6 +78,12 @@ public class Main
         String[] a = {"MAIN"};
         processing.core.PApplet.runSketch( a, new Cafe());
     }
+
+    public void myCafe()
+    {
+        String[] a = {"MAIN"};
+        processing.core.PApplet.runSketch( a, new myCafe());
+    }
     
     public void dogsCats()
     {
@@ -121,6 +127,6 @@ public class Main
     public static void main(String[] arg)
     {
         Main main = new Main();
-		main.cafe();        
+		main.myCafe();        
     }
 }
